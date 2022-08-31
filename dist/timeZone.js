@@ -1409,14 +1409,14 @@ eval("function tzlookup(Y,W){\"use strict\";var U=\"XIXHXHXGXGXQXQXPXPXOXOXN##U6
 
 /***/ }),
 
-/***/ "./index.js":
-/*!******************!*\
-  !*** ./index.js ***!
-  \******************/
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var tz_lookup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tz-lookup */ \"./node_modules/tz-lookup/tz.js\");\n/* harmony import */ var moment_timezone__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment-timezone */ \"./node_modules/moment-timezone/index.js\");\n\r\n\r\n\r\nasync function timeZone(city) {\r\n  console.log(\"api called\");\r\n  let response = await fetch(\r\n    `https://nominatim.openstreetmap.org/?addressdetails=1&q=${city}&format=json&limit=1`\r\n  );\r\n  let data = await response.json();\r\n  let timeZone = tz_lookup__WEBPACK_IMPORTED_MODULE_0__(data[0].lat, data[0].lon);\r\n  let time = moment_timezone__WEBPACK_IMPORTED_MODULE_1__.tz(new Date(), timeZone).format();\r\n  // console.log(\"moment\", moment.tz(new Date(), timeZone));\r\n  return time;\r\n}\r\n\r\nconst btn = document.getElementById(\"tz\");\r\n\r\nbtn.addEventListener(\"click\", async function () {\r\n  // setTimeout(function () {\r\n  console.log(\"button clicked\");\r\n  const city1 = document.getElementById(\"city1\").value;\r\n  const city2 = document.getElementById(\"city2\").value;\r\n  if (city1 === \"\" || city2 === \"\") {\r\n    alert(\"Name of places can not be empty\");\r\n    return false;\r\n  }\r\n  let t1 = await timeZone(city1);\r\n  let t2 = await timeZone(city2);\r\n  console.log(\"t1 is\" + t1 + \" \" + \"t2 is\" + t2);\r\n\r\n  const diffHrs = Math.abs(t1.charAt(t1.length - 4) - t2.charAt(t2.length - 4));\r\n  console.log(\"diffHrs\", diffHrs);\r\n  const diffmins = Math.abs(\r\n    (t1.slice(-2) == \"\" ? 0 : t1.slice(-2)) -\r\n      (t2.slice(-2) == \"\" ? 0 : t2.slice(-2))\r\n  );\r\n\r\n  const output = document.getElementById(\"diff\");\r\n  output.style.display = \"flex\";\r\n\r\n  output.innerText = `The difference between time zones of above places is: ${diffHrs} : ${diffmins} Hrs`;\r\n  // }, 100);\r\n});\r\n\n\n//# sourceURL=webpack://time_zone/./index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var tz_lookup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tz-lookup */ \"./node_modules/tz-lookup/tz.js\");\n/* harmony import */ var moment_timezone__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment-timezone */ \"./node_modules/moment-timezone/index.js\");\n\r\n\r\n\r\nasync function timeZone(city) {\r\n  console.log(\"api called\");\r\n  let response = await fetch(\r\n    `https://nominatim.openstreetmap.org/?addressdetails=1&q=${city}&format=json&limit=1`\r\n  );\r\n  let data = await response.json();\r\n  let timeZone = tz_lookup__WEBPACK_IMPORTED_MODULE_0__(data[0].lat, data[0].lon);\r\n  let time = moment_timezone__WEBPACK_IMPORTED_MODULE_1__.tz(new Date(), timeZone).format();\r\n  // console.log(\"moment\", moment.tz(new Date(), timeZone));\r\n  return time;\r\n}\r\n\r\nconst btn = document.getElementById(\"tz\");\r\n\r\nbtn.addEventListener(\"click\", async function () {\r\n  // setTimeout(function () {\r\n  console.log(\"button clicked\");\r\n  const city1 = document.getElementById(\"city1\").value;\r\n  const city2 = document.getElementById(\"city2\").value;\r\n  if (city1 === \"\" || city2 === \"\") {\r\n    alert(\"Name of places can not be empty\");\r\n    return false;\r\n  }\r\n  let t1 = await timeZone(city1);\r\n  let t2 = await timeZone(city2);\r\n  console.log(\"t1 is\" + t1 + \" \" + \"t2 is\" + t2);\r\n\r\n  const diffHrs = Math.abs(t1.charAt(t1.length - 4) - t2.charAt(t2.length - 4));\r\n  console.log(\"diffHrs\", diffHrs);\r\n  const diffmins = Math.abs(\r\n    (t1.slice(-2) == \"\" ? 0 : t1.slice(-2)) -\r\n      (t2.slice(-2) == \"\" ? 0 : t2.slice(-2))\r\n  );\r\n\r\n  const output = document.getElementById(\"diff\");\r\n  output.style.display = \"flex\";\r\n\r\n  output.innerText = `The difference between time zones of above places is: ${diffHrs} : ${diffmins} Hrs`;\r\n  // }, 100);\r\n});\r\n\n\n//# sourceURL=webpack://time_zone/./src/index.js?");
 
 /***/ }),
 
@@ -1491,7 +1491,7 @@ eval("module.exports = JSON.parse('{\"version\":\"2021e\",\"zones\":[\"Africa/Ab
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./index.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
 /******/ 	
 /******/ })()
 ;
