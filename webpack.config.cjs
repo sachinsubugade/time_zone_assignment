@@ -1,6 +1,6 @@
 const path = require("path");
 module.exports = {
-  entry: "index.js",
+  entry: "./index.js",
   output: {
     filename: "timeZone.js",
     path: path.resolve(__dirname, "dist"),
